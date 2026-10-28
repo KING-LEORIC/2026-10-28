@@ -31,9 +31,9 @@ for threshold in [0.5, 0.3]:
     # TODO H02: 현재 임계값보다 점수가 클 때만 양성1로 바꾸세요.
     # 처음에는 전부 음성(0)으로 예측
     pred = np.zeros(len(y), dtype=int)
-    # 현재 임계값보다 큰 점수만 양성(1) 처리
-    # score == threshold인 경우는 0 유지
-    pred[score > threshold] = 1
+    # 현재 임계값보다 큰 점수만 양성(1), 나머지는 음성(0) 처리
+    # - score == threshold인 경우는 0 유지
+    pred = (score > threshold).astype(int)
     # TODO 끝
     # 혼동행렬 계산
     #           예측
